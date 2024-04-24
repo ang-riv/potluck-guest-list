@@ -16,11 +16,7 @@ addGuestButton.addEventListener("click", function () {
     // capture the value of the guest name in the textbox
     const guest = guestInput.value;
     if(guest !== ""){
-        // create a list item
-        const listItem = document.createElement("li");
-        // the list item's text will be the guest's name
-        listItem.innerText = guest;
-        guestList.append(listItem);
+        addToList(guest);
         updateGuestCount();
     }
     clearInput();
@@ -32,9 +28,9 @@ const clearInput = function () {
 }
 
 // add guest to the list
-const addToList = function(){
+const addToList = function (guest) {
         // create a list item
-        let listItem = document.createElement("li");
+        const listItem = document.createElement("li");
         // the list item's text will be the guest's name
         listItem.innerText = guest;
         guestList.append(listItem);

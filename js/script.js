@@ -44,7 +44,7 @@ const updateGuestCount = function () {
     // select all of the guests
     let guests = document.querySelectorAll(".guest-list li");
     guestCount.innerText = guests.length;
-    if(guests.length === 8){
+    if(guests.length === 3){
         // if there are exactly 8 guests, hide the button and text box
         addGuestButton.classList.add("hide");
         guestInput.classList.add("hide");
@@ -58,10 +58,10 @@ const updateGuestCount = function () {
 // give the guest an item to make
 const assignItems = function () {
     // array of yummy items
-    potluckItems = ["pasta", "sandwiches", "pinwheels", "pizza", "cookies", "fruit", "salad", "mashed potatoes", "spaghetti", "deviled eggs", "nachos", "fried rice"];
+    const potluckItems = ["pasta", "sandwiches", "pinwheels", "pizza", "cookies", "fruit", "salad", "mashed potatoes", "spaghetti", "deviled eggs", "nachos", "fried rice"];
     // all of the guests
     const allGuests = document.querySelectorAll(".guest-list li");
-    for (const guest of allGuests) {
+    for (let guest of allGuests) {
         // make a random number from 0 to the total number of potluck items
         let randomPotLuckIndex = Math.floor(Math.random() * potluckItems.length);
         // this is the item at the random index number that we generated
@@ -71,6 +71,8 @@ const assignItems = function () {
         // you need to use guest.innerText to access the NAME inside of the li element. If you use just guest you end up with the LIST ELEMENT, not the text!
         listItem.innerText = `${guest.innerText} is bringing ${randomPotLuckItem}.`
         // add the listItem to the ul
-        assignItems.append(listItem);
+        assignedItems.append(listItem);
     }
 };
+
+assignButton.addEventListener("click", assignItems());

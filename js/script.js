@@ -17,10 +17,11 @@ addGuestButton.addEventListener("click", function () {
     const guest = guestInput.value;
     if(guest !== ""){
         // create a list item
-        let listItem = document.createElement("li");
+        const listItem = document.createElement("li");
         // the list item's text will be the guest's name
         listItem.innerText = guest;
         guestList.append(listItem);
+        updateGuestCount();
     }
     clearInput();
 });
@@ -28,4 +29,28 @@ addGuestButton.addEventListener("click", function () {
 // clear the input box each time they add a guest 
 const clearInput = function () {
     guestInput.value = "";
+}
+
+// add guest to the list
+const addToList = function(){
+        // create a list item
+        let listItem = document.createElement("li");
+        // the list item's text will be the guest's name
+        listItem.innerText = guest;
+        guestList.append(listItem);
+}
+
+const updateGuestCount = function () {
+    // select all of the guests
+    let guests = document.querySelectorAll(".guest-list li");
+    guestCount.innerText = guests.length;
+    if(guests.length === 8){
+        // if there are exactly 8 guests, hide the button and text box
+        addGuestButton.classList.add("hide");
+        guestInput.classList.add("hide");
+        guestInputLabel.classList.add("hide");
+
+        // show the guest full alert
+        guestFull.classList.remove("hide");
+    }
 }
